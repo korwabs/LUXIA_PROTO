@@ -10,6 +10,7 @@ from utils.auth_utils import get_current_user_id_from_jwt, get_user_id_from_stre
 from sandbox.sandbox import get_or_start_sandbox
 from services.supabase import DBConnection
 from agent.api import get_or_create_project_sandbox
+from sandbox.browser_automation_api import router as browser_automation_router
 
 
 # Initialize shared resources
@@ -21,6 +22,9 @@ def initialize(_db: DBConnection):
     global db
     db = _db
     logger.info("Initialized sandbox API with database connection")
+    
+    # 브라우저 자동화 라우터 등록
+    router.include_router(browser_automation_router)
 
 class FileInfo(BaseModel):
     """Model for file information"""
