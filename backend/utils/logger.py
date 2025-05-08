@@ -128,4 +128,11 @@ def setup_logger(name: str = 'agentpress') -> logging.Logger:
     return logger
 
 # Create default logger instance
-logger = setup_logger() 
+logger = setup_logger()
+
+# 로거 함수들을 모듈 레벨로 노출
+debug = logger.debug
+info = logger.info
+warning = logger.warning
+error = logger.error
+critical = logger.critical
